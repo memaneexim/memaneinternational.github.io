@@ -1,6 +1,5 @@
 backend:
-  name: github
-  repo: memaneexim/memaneinternational.github.io
+  name: git-gateway
   branch: main
 
 media_folder: "assets/images"
