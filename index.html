@@ -6,34 +6,95 @@
     <title>Memane International | Exporters & Suppliers</title>
     <style>
         /* Basic Styling */
-        body { margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f4; }
         
         /* Top Bar */
-        .top-bar { background-color: #f8f9fa; padding: 10px 50px; display: flex; justify-content: flex-end; gap: 20px; font-size: 13px; color: #555; border-bottom: 1px solid #ddd; }
+        .top-bar { background-color: #e9ecef; padding: 10px 50px; display: flex; justify-content: flex-end; gap: 20px; font-size: 13px; color: #555; }
         
         /* Main Header */
-        .header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background: white; }
-        .header h1 { margin: 0; color: #8B5A2B; /* A nice earthy brown placeholder color */ }
+        .header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background: white; border-bottom: 3px solid #8B5A2B; }
+        .header h1 { margin: 0; color: #8B5A2B; font-size: 28px; letter-spacing: 1px; }
         
         /* Navigation Menu */
-        .nav-bar { background-color: #333; display: flex; justify-content: center; padding: 15px 0; }
-        .nav-bar a { color: white; text-decoration: none; padding: 0 25px; font-size: 15px; font-weight: bold; text-transform: uppercase; }
+        .nav-bar { background-color: #333; display: flex; justify-content: center; padding: 15px 0; position: sticky; top: 0; z-index: 100; }
+        .nav-bar a { color: white; text-decoration: none; padding: 0 25px; font-size: 15px; font-weight: 600; text-transform: uppercase; transition: color 0.3s; }
         .nav-bar a:hover { color: #f39c12; }
         
-        /* Hero Section (Temporary) */
-        .hero { text-align: center; padding: 100px 20px; background-color: #e9ecef; }
+        /* Hero Banner with Background Image */
+        .hero-image {
+            /* I'm using a temporary high-quality stock photo of agriculture here */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=80');
+            height: 450px;
+            background-position: center;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        .hero-text h2 { font-size: 45px; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
+        .hero-text p { font-size: 20px; color: #f39c12; font-weight: bold; }
+
+        /* Content Container */
+        .container { max-width: 1200px; margin: 50px auto; padding: 0 20px; text-align: center; }
+
+        /* Section Titles */
+        .section-title h2 { color: #8B5A2B; font-size: 36px; margin-bottom: 10px; }
+        .section-title p { color: #777; font-size: 16px; margin-bottom: 40px; }
+
+        /* Product Category Grid */
+        .category-grid { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; }
+        
+        /* Individual Category Cards */
+        .category-card { 
+            background: white; 
+            border-radius: 8px; 
+            padding: 30px 20px; 
+            width: 260px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+            transition: transform 0.3s ease; 
+        }
+        .category-card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        
+        /* Circular Images just like the video */
+        .circle-img { 
+            width: 180px; 
+            height: 180px; 
+            border-radius: 50%; 
+            object-fit: cover; 
+            border: 6px solid #f4f4f4; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+            margin-bottom: 15px;
+        }
+        
+        .category-card h3 { color: #333; margin: 10px 0 20px 0; font-size: 22px; }
+        
+        /* Buttons */
+        .view-all-btn { 
+            display: inline-block; 
+            background: #333; 
+            color: white; 
+            padding: 10px 25px; 
+            text-decoration: none; 
+            border-radius: 4px; 
+            font-weight: bold; 
+            transition: background 0.3s;
+        }
+        .view-all-btn:hover { background: #8B5A2B; }
+        
     </style>
 </head>
 <body>
 
     <div class="top-bar">
-        <span>GST NO.: (Add Your GST Here)</span>
+        <span><strong>GST NO.:</strong> (Add Your GST Here)</span>
         <span>✉ sales@memaneinternational.in</span>
     </div>
 
     <div class="header">
         <h1>MEMANE INTERNATIONAL</h1>
-        </div>
+    </div>
 
     <div class="nav-bar">
         <a href="#">Home</a>
@@ -42,9 +103,41 @@
         <a href="#">Contact Us</a>
     </div>
 
-    <div class="hero">
-        <h2>Premium Selection of Grains, Spices, and Agricultural Products</h2>
-        <p>Your Trusted Global Export Partner</p>
+    <div class="hero-image">
+        <div class="hero-text">
+            <h2>Global Export Leaders</h2>
+            <p>Premium Grains, Spices, & Agricultural Products</p>
+        </div>
+    </div>
+
+    <div class="container">
+        
+        <div class="section-title">
+            <h2>Our Product Range</h2>
+            <p>Explore our premium quality categories sourced from the finest farms.</p>
+        </div>
+
+        <div class="category-grid">
+            
+            <div class="category-card">
+                <img class="circle-img" src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=400&q=80" alt="Basmati Rice">
+                <h3>Basmati Rice</h3>
+                <a href="#" class="view-all-btn">View All</a>
+            </div>
+
+            <div class="category-card">
+                <img class="circle-img" src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=400&q=80" alt="Whole Spices">
+                <h3>Whole Spices</h3>
+                <a href="#" class="view-all-btn">View All</a>
+            </div>
+
+            <div class="category-card">
+                <img class="circle-img" src="https://images.unsplash.com/photo-1585238342024-78d387f4a707?auto=format&fit=crop&w=400&q=80" alt="Indian Pulses">
+                <h3>Indian Pulses</h3>
+                <a href="#" class="view-all-btn">View All</a>
+            </div>
+
+        </div>
     </div>
 
 </body>
