@@ -7,7 +7,7 @@
     <style>
         body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f4f4; }
         
-        /* Shared Header/Nav (Same as Home) */
+        /* Shared Header/Nav */
         .top-bar { background-color: #e9ecef; padding: 10px 50px; display: flex; justify-content: flex-end; gap: 20px; font-size: 13px; color: #555; }
         .header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background: white; border-bottom: 3px solid #8B5A2B; }
         .header h1 { margin: 0; color: #8B5A2B; font-size: 28px; }
@@ -19,7 +19,7 @@
         .page-header { background: #fff; padding: 30px 20px; text-align: center; margin-bottom: 30px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
         .page-header h2 { color: #333; margin: 0; font-size: 32px; }
 
-        /* Product Grid */
+        /* Dynamic Product Grid */
         .container { max-width: 1200px; margin: 0 auto 50px auto; padding: 0 20px; }
         .category-section { margin-bottom: 50px; }
         .category-section h3 { border-bottom: 2px solid #8B5A2B; padding-bottom: 10px; color: #555; }
@@ -36,10 +36,11 @@
         .btn-view { background: #fff; border: 1px solid #333; color: #333; }
         .btn-enquiry:hover { background: #e67e22; }
         .btn-view:hover { background: #333; color: #fff; }
-
+        
+        #loading-message { text-align: center; width: 100%; font-size: 20px; color: #8B5A2B; margin-top: 50px; }
+        
         /* Footer */
         .footer { background: #222; color: #ccc; padding: 40px 50px; text-align: center; font-size: 14px; }
-        .footer p { margin: 5px 0; }
         
         @media (max-width: 900px) { .product-card { width: calc(33.333% - 14px); } }
         @media (max-width: 600px) { .product-card { width: calc(50% - 10px); } }
@@ -66,52 +67,8 @@
         <h2>Our Complete Product Range</h2>
     </div>
 
-    <div class="container">
-        
-        <div class="category-section">
-            <h3>Premium Fox Nuts (Makhana)</h3>
-            <div class="grid">
-                <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1596500589332-9858349257bd?auto=format&fit=crop&w=400&q=80" alt="Raw Phool Makhana">
-                    <h4>Raw Phool Makhana</h4>
-                    <div class="btn-group">
-                        <a href="enquiry.html?product=Premium+Phool+Makhana" class="btn btn-enquiry">Enquiry Now</a>
-                        <a href="product-detail.html?id=001" class="btn btn-view">View More</a>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1596500589332-9858349257bd?auto=format&fit=crop&w=400&q=80" alt="Roasted & Flavored Makhana">
-                    <h4>Roasted & Flavored Makhana</h4>
-                    <div class="btn-group">
-                        <a href="enquiry.html?product=Roasted+Flavored+Makhana" class="btn btn-enquiry">Enquiry Now</a>
-                        <a href="#" class="btn btn-view">View More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="category-section">
-            <h3>Basmati Rice</h3>
-            <div class="grid">
-                <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=400&q=80" alt="1121 Golden Sella">
-                    <h4>1121 Golden Sella Basmati Rice</h4>
-                    <div class="btn-group">
-                        <a href="enquiry.html?product=1121+Golden+Sella+Basmati" class="btn btn-enquiry">Enquiry Now</a>
-                        <a href="product-detail.html?id=002" class="btn btn-view">View More</a>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=400&q=80" alt="1121 Steam Basmati">
-                    <h4>1121 Steam Basmati Rice</h4>
-                    <div class="btn-group">
-                        <a href="enquiry.html?product=1121+Steam+Basmati+Rice" class="btn btn-enquiry">Enquiry Now</a>
-                        <a href="#" class="btn btn-view">View More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+    <div class="container" id="catalog-container">
+        <div id="loading-message">Loading catalog...</div>
     </div>
 
     <div class="footer">
@@ -120,6 +77,60 @@
         <p>Email: sales@memaneinternational.in</p>
         <p>© 2026 Memane International. All Rights Reserved.</p>
     </div>
+
+    <script>
+        fetch('catalog.json')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('catalog-container');
+                const products = data.products;
+                const categories = {};
+
+                // Step 1: Sort products into their categories
+                for (let id in products) {
+                    let cat = products[id].category;
+                    if (!categories[cat]) {
+                        categories[cat] = [];
+                    }
+                    // Attach the ID to the product data so we can use it for the button
+                    products[id].id = id; 
+                    categories[cat].push(products[id]);
+                }
+
+                // Step 2: Build the HTML visually
+                let htmlOutput = '';
+                for (let cat in categories) {
+                    htmlOutput += `
+                        <div class="category-section">
+                            <h3>${cat}</h3>
+                            <div class="grid">
+                    `;
+                    
+                    // Loop through each product in this category
+                    categories[cat].forEach(p => {
+                        htmlOutput += `
+                            <div class="product-card">
+                                <img src="${p.image}" alt="${p.name}">
+                                <h4>${p.name}</h4>
+                                <div class="btn-group">
+                                    <a href="enquiry.html?product=${encodeURIComponent(p.name)}" class="btn btn-enquiry">Enquiry Now</a>
+                                    <a href="product-detail.html?id=${p.id}" class="btn btn-view">View More</a>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    
+                    htmlOutput += `</div></div>`; // Close grid and category section
+                }
+
+                // Step 3: Inject the finished HTML into the page
+                container.innerHTML = htmlOutput;
+            })
+            .catch(error => {
+                console.error('Error loading catalog:', error);
+                document.getElementById('catalog-container').innerHTML = "<h3>Error loading product catalog.</h3>";
+            });
+    </script>
 
 </body>
 </html>
