@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raw Phool Makhana | Memane International</title>
+    <style>
+        body { margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f9f9f9; }
+        
+        /* Shared Header/Nav */
+        .top-bar { background-color: #e9ecef; padding: 10px 50px; display: flex; justify-content: flex-end; gap: 20px; font-size: 13px; color: #555; }
+        .header { display: flex; justify-content: space-between; align-items: center; padding: 20px 50px; background: white; border-bottom: 3px solid #8B5A2B; }
+        .header h1 { margin: 0; color: #8B5A2B; font-size: 28px; }
+        .nav-bar { background-color: #333; display: flex; justify-content: center; padding: 15px 0; position: sticky; top: 0; z-index: 100; }
+        .nav-bar a { color: white; text-decoration: none; padding: 0 25px; font-size: 15px; font-weight: 600; text-transform: uppercase; }
+        .nav-bar a:hover { color: #f39c12; }
+
+        /* Product Detail Layout */
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; display: flex; gap: 40px; flex-wrap: wrap; }
+        
+        /* Left Column: Image & Specs */
+        .product-info { flex: 1; min-width: 300px; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        .product-info img { width: 100%; border-radius: 5px; margin-bottom: 20px; }
+        .product-info h2 { margin-top: 0; color: #333; font-size: 28px; border-bottom: 2px solid #eee; padding-bottom: 15px; }
+        
+        .specs-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .specs-table th, .specs-table td { padding: 12px 15px; text-align: left; border-bottom: 1px solid #eee; }
+        .specs-table th { background-color: #f4f4f4; color: #555; width: 40%; }
+        
+        /* Right Column: Inquiry Form */
+        .inquiry-form-container { flex: 1; min-width: 300px; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 5px solid #8B5A2B; height: fit-content; }
+        .inquiry-form-container h3 { margin-top: 0; color: #333; font-size: 22px; }
+        
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; color: #555; font-size: 14px; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-family: inherit; }
+        
+        .submit-btn { background: #8B5A2B; color: white; padding: 12px 20px; border: none; border-radius: 4px; font-size: 16px; font-weight: bold; cursor: pointer; width: 100%; transition: background 0.3s; }
+        .submit-btn:hover { background: #333; }
+
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <span>✉ sales@memaneinternational.in</span>
+    </div>
+
+    <div class="header">
+        <h1>MEMANE INTERNATIONAL</h1>
+    </div>
+
+    <div class="nav-bar">
+        <a href="index.html">Home</a>
+        <a href="#">About Us</a>
+        <a href="products.html">Products</a>
+        <a href="#">Contact Us</a>
+    </div>
+
+    <div class="container">
+        
+        <div class="product-info">
+            <img src="https://images.unsplash.com/photo-1596500589332-9858349257bd?auto=format&fit=crop&w=800&q=80" alt="Raw Phool Makhana">
+            <h2>Premium Raw Phool Makhana (Fox Nuts)</h2>
+            <p>We supply premium, highly nutritious raw Phool Makhana. Carefully processed and sorted to ensure maximum puffiness and quality. Ideal for roasting, flavoring, and bulk commercial distribution.</p>
+            
+            <table class="specs-table">
+                <tr><th>Business Type</th><td>Exporter, Supplier</td></tr>
+                <tr><th>MOQ (Domestic)</th><td>100 Kg</td></tr>
+                <tr><th>MOQ (Export)</th><td>1 Ton</td></tr>
+                <tr><th>Color</th><td>White</td></tr>
+                <tr><th>Packaging Size</th><td>10kg / 20kg Gunny Bags</td></tr>
+                <tr><th>Shelf Life</th><td>12 Months</td></tr>
+                <tr><th>Origin</th><td>India</td></tr>
+            </table>
+        </div>
+
+        <div class="inquiry-form-container">
+            <h3>Get a Quick Quote</h3>
+            <form name="makhana-inquiry" method="POST" data-netlify="true">
+                
+                <div class="form-group">
+                    <label for="name">Your Name / Company Name *</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Mobile / WhatsApp Number *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="quantity">Estimated Quantity Required</label>
+                    <input type="text" id="quantity" name="quantity" placeholder="e.g., 500 Kgs">
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Additional Requirements</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Please specify packaging needs or delivery location..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Send Enquiry</button>
+            </form>
+        </div>
+
+    </div>
+
+</body>
+</html>
