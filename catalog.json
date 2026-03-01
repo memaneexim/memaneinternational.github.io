@@ -1,0 +1,30 @@
+{
+  "products": {
+    "001": {
+      "name": "Premium Raw Phool Makhana",
+      "category": "Fox Nuts",
+      "image": "https://images.unsplash.com/photo-1596500589332-9858349257bd?auto=format&fit=crop&w=800&q=80",
+      "description": "Highly nutritious raw Phool Makhana. Carefully processed and sorted to ensure maximum puffiness.",
+      "specs": {
+        "Business Type": "Exporter, Supplier",
+        "MOQ": "100 Kg",
+        "Packaging": "10kg / 20kg Gunny Bags",
+        "Shelf Life": "12 Months",
+        "Origin": "India"
+      }
+    },
+    "002": {
+      "name": "1121 Golden Sella Basmati Rice",
+      "category": "Rice",
+      "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=800&q=80",
+      "description": "Extra-long grain Basmati rice, parboiled to lock in nutrients and ensure grains remain separate after cooking.",
+      "specs": {
+        "Business Type": "Exporter, Supplier",
+        "MOQ": "5 Metric Tons",
+        "Average Grain Length": "8.35 mm",
+        "Moisture": "12% Max",
+        "Packaging": "25kg / 50kg PP Bags"
+      }
+    }
+  }
+}
